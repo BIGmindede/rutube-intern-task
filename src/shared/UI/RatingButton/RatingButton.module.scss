@@ -1,0 +1,35 @@
+.button {
+    background-color: unset;
+    border: 1px solid #1F73F9;
+    border-radius: 20px;
+    height: 40px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: start;
+    cursor: pointer;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background-color: #1F73F9;
+    }
+
+    &:active {
+        filter: brightness(0.8);
+    }
+
+    &.text {
+        width: 200px;
+        padding: 0 16px;
+        font-size: 12px;
+    }
+
+    &.number {
+        width: 40px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    &.active {
+        background-color: #1F73F9;
+    }
+}
