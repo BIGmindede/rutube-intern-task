@@ -1,13 +1,15 @@
 import React from "react"
 import './styles/index.scss'
+import Header from "widgets/Header/Header"
 
 
 const App: React.FC = () => {
 
   return (
     <>
-      <div className="app">
-      </div>
+        <Header/>
+        <main className="app">
+        </main>
     </>
   )
 }
