@@ -1,6 +1,8 @@
 @import "variables/globals";
 
 :root {
+    width: clamp(100px, 100%, 1053px);
+    margin: 0 auto;
     background-color: var(--bg);
 
     * {
