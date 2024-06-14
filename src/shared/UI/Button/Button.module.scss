@@ -6,7 +6,17 @@
     line-height: 20px;
     font-size: 14px;
     text-align: center;
-    
+    cursor: pointer;
+    transition: filter 0.1s linear;
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+
+    &:active {
+        filter: brightness(0.8);
+    }
+
     &.fixed {
         width: 222px;
     }
