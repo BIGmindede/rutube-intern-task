@@ -1,3 +1,13 @@
+@import "variables/globals";
+
 :root {
-    background-color: #14191F;
+    background-color: var(--bg);
+
+    * {
+        box-sizing: border-box;
+        border: 0;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+    }
 }
