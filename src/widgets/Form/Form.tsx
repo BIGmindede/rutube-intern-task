@@ -37,7 +37,11 @@ const Form: React.FC<FormProps> = ({
     const navigate = useNavigate()
 
   return (
-    <form className={classNames(cls.form, {[cls.simple]: questions.length <= 1}, [])}>
+    <form 
+        className={classNames(
+            cls.form,{},
+            [questions.length <= 1 ? cls.simple : cls.extended]
+        )}>
         {heading &&
             <Heading text={heading} />
         }
@@ -60,7 +64,7 @@ const Form: React.FC<FormProps> = ({
             <Button 
                 onClick={() => {
                     if (questions.length > 0) {
-                        // Добавляем в localStorage ответы, пока что не делаем
+                        // Выводим в консоль
                     }
                     navigate(redirectOnComplete)
                 }}
