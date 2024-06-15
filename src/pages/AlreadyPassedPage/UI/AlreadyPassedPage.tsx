@@ -2,7 +2,9 @@ import React from "react"
 
 const AlreadyPassedPage: React.FC = () => {
   return (
-    <div>AlreadyPassedPage</div>
+    <section>
+        
+    </section>
   )
 }
 
