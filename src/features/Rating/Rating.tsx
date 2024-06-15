@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { classNames } from 'shared/lib/classNames'
 import cls from './Rating.module.scss'
 import RatingButton, { RatingButtonThemes } from 'shared/UI/RatingButton/RatingButton'
+import { useNavigate } from 'react-router-dom'
+import { AppRoutes } from 'app/providers/router/config/routerConfig'
 
 export enum RatingThemes {
     GRID = 'grid',
@@ -18,16 +20,22 @@ interface RatingProps {
     boundsCaption?: {
         left: string,
         right: string
-    }
+    },
+    redirectOnAnswer?: AppRoutes | false
 }
 
 const Rating: React.FC<RatingProps> = ({
-    label, required, theme, buttons, questionID, boundsCaption
+    label, required, theme, buttons, questionID, boundsCaption, redirectOnAnswer
 }) => {
     const [answer, setAnswer] = useState<number | null>(null)
 
+    const navigate = useNavigate()
+
     const handleAnswer = (buttonIndex: number) => {
         setAnswer(buttonIndex + 1)
+        if (redirectOnAnswer) {
+            navigate(redirectOnAnswer)
+        }
     }
 
     return (
