@@ -2,9 +2,9 @@ import React from "react"
 
 const ThanksPage: React.FC = () => {
   return (
-    <section>
+    <main>
         
-    </section>
+    </main>
   )
 }
 

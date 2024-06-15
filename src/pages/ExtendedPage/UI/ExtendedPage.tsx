@@ -2,9 +2,9 @@ import React from "react"
 
 const ExtendedPage: React.FC = () => {
   return (
-    <section>
+    <main>
         
-    </section>
+    </main>
   )
 }
 
