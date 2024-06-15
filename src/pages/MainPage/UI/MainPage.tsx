@@ -3,6 +3,7 @@ import { RatingThemes } from "features/Rating/Rating"
 import React from "react"
 import { Link } from "react-router-dom"
 import { CaptionThemes } from "shared/UI/Caption/Caption"
+import Image from "shared/UI/Image/Image"
 import Form from "widgets/Form/Form"
 
 const MainPage: React.FC = () => {
@@ -21,9 +22,8 @@ const MainPage: React.FC = () => {
 
   return (
     <main>
-        <Link to={}>aaaaaa</Link>
         <section>
-            <img src="main.png" width={455.36} height={200}/>
+            <Image pathToFile="main.png" maxWidth={455.36} maxHeight={200}/>
             <Form
                 heading="Уважаемый клиент!"
                 caption={{
