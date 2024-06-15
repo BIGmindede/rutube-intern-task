@@ -13,7 +13,7 @@ interface RatingProps {
     label?: string,
     required?: boolean,
     theme: RatingThemes,
-    buttons: Array<string | number>,
+    buttons: Array<string> | Array<number>,
     questionID: number
     boundsCaption?: {
         left: string,
