@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { MouseEvent, useState } from 'react'
 import { classNames } from 'shared/lib/classNames'
 import cls from './Rating.module.scss'
 import RatingButton, { RatingButtonThemes } from 'shared/UI/RatingButton/RatingButton'
@@ -31,7 +31,8 @@ const Rating: React.FC<RatingProps> = ({
 
     const navigate = useNavigate()
 
-    const handleAnswer = (buttonIndex: number) => {
+    const handleAnswer = (e: MouseEvent, buttonIndex: number) => {
+        e.preventDefault()
         setAnswer(buttonIndex + 1)
         if (redirectOnAnswer) {
             navigate(redirectOnAnswer)
@@ -53,7 +54,7 @@ const Rating: React.FC<RatingProps> = ({
                             : RatingButtonThemes.NUMBER
                         }
                         active={index + 1 === answer}
-                        onClick={() => handleAnswer(index)}
+                        onClick={(e) => handleAnswer(e, index)}
                     />
                 )}
             </div>
