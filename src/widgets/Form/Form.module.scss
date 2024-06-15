@@ -1,0 +1,32 @@
+@import '../../app/styles/variables/mixins.scss';
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+
+    &.simple {
+        gap: 28px;
+        padding: 10px;
+        width: clamp(375px, 100%, 550px);
+
+        @include mobile {
+            gap: 14px;
+            padding: 10px 16px;
+        }
+    }
+
+    &.extended {
+        gap: 28px;
+        padding: 16px 0 24px 0;
+
+        @include tablet {
+            padding: 16px 16px 24px 16px;
+        }
+
+        @include mobile {
+            padding: 16px 16px 24px 16px;
+        }
+    }
+}

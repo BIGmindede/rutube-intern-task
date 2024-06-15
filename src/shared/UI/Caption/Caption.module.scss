@@ -1,0 +1,15 @@
+.caption {
+    width: 100%;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+
+    &.basic {
+        text-align: center;
+    }
+
+    &.pale {
+        text-align: start;
+        color: var(--pale-txt);
+    }
+}
