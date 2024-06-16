@@ -40,7 +40,7 @@ const Form: React.FC<FormProps> = ({
     const dispatch = useAppDispatch()
 
     const requiredQuestions: Array<number> = questions
-        .filter(q => q.required).map((q, i) => i + 1)
+        .filter(q => q.required).map((_q, i) => i + 1)
     localStorage.setItem("requiredQuestions", JSON.stringify(requiredQuestions))
 
     useEffect(() => {
