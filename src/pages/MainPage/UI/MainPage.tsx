@@ -1,7 +1,6 @@
 import { AppRoutes } from "app/providers/router/config/routerConfig"
 import { RatingThemes } from "features/Rating/Rating"
 import React from "react"
-import { Link } from "react-router-dom"
 import { CaptionThemes } from "shared/UI/Caption/Caption"
 import Image from "shared/UI/Image/Image"
 import Form from "widgets/Form/Form"

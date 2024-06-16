@@ -1,3 +1,5 @@
+@import '../../../app/styles/variables/mixins.scss';
+
 .button {
     background-color: #00A1E7;
     padding: 12px 16px;
@@ -8,6 +10,7 @@
     text-align: center;
     cursor: pointer;
     transition: filter 0.1s linear;
+    width: 222px;
 
     &:hover {
         filter: brightness(1.1);
@@ -17,12 +20,10 @@
         filter: brightness(0.8);
     }
 
-    &.fixed {
-        width: 222px;
-    }
-
     &.stretching {
-        width: 100%;
+        @include mobile {
+            width: 100%;
+        }
     }
 
     &:disabled {
@@ -30,3 +31,4 @@
         cursor: not-allowed;
     }
 }
+

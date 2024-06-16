@@ -1,6 +1,5 @@
 import { AppRoutes } from "app/providers/router/config/routerConfig"
 import React from "react"
-import { ButtonThemes } from "shared/UI/Button/Button"
 import { CaptionThemes } from "shared/UI/Caption/Caption"
 import Image from "shared/UI/Image/Image"
 import Form from "widgets/Form/Form"
@@ -17,10 +16,7 @@ const AlreadyPassedPage: React.FC = () => {
                     theme: CaptionThemes.BASIC
                 }}
                 redirectOnComplete={AppRoutes.RUTUBE}
-                completionButton={{
-                    label: "Перейти на RUTUBE",
-                    theme: ButtonThemes.FIXED  
-                }}
+                completionButton="Перейти на RUTUBE"
             />
         </section>
     </main>

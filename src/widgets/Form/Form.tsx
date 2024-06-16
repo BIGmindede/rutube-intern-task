@@ -28,10 +28,7 @@ interface FormProps {
         }
     }>
     redirectOnComplete: AppRoutes,
-    completionButton?: {
-        label: string,
-        theme: ButtonThemes
-    },
+    completionButton?: string,
     formKey?: string
 }
 
@@ -88,8 +85,11 @@ const Form: React.FC<FormProps> = ({
                         navigate(redirectOnComplete)
                     }
                 }}
-                label={completionButton.label}
-                theme={completionButton.theme}
+                label={completionButton}
+                theme={questions.length <= 1
+                    ? ButtonThemes.FIXED 
+                    : ButtonThemes.STRETCHING
+                }
             />
         }
     </form>

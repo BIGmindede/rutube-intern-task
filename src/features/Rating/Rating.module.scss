@@ -1,3 +1,5 @@
+@import '../../app/styles/variables/mixins.scss';
+
 .rating {
     width: 100%;
     display: flex;
@@ -14,32 +16,6 @@
         flex-wrap: wrap;
     }
 
-    &.grid {
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            justify-items: center;
-            gap: 8px 0;
-            
-            @media (max-width: 600px) {
-                padding: 0 60px;
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-    }
-
-    &.row {
-        .buttons {
-            flex-direction: row; 
-        }  
-    }
-
-    &.column {
-        .buttons {
-            flex-direction: column;
-        }
-    }
-
     .label {
         font-size: 12px;
     }
@@ -48,14 +24,37 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-
-        span {
-            font-size: 14px;
-        }
-
-        @media (max-width: 600px) {
+        font-size: 14px;
+        @include mobile {
+            max-width: 343px;
             padding: 0 32px;
             grid-template-columns: repeat(5, 1fr);
         }
+    }
+}
+
+.grid {
+    .buttons {
+        justify-content: space-between;
+        gap: 8px 0;
+    }
+    @include mobile {
+        justify-content: center;
+        .buttons {
+            max-width: 343px;
+            padding: 0 60px;
+        }
+    }
+}
+
+.row {
+    .buttons {
+        flex-direction: row; 
+    }  
+}
+
+.column {
+    .buttons {
+        flex-direction: column;
     }
 }

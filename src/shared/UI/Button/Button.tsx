@@ -7,6 +7,9 @@ import { selectFormButtonState } from 'shared/config/store/slices/formButtonSlic
 export enum ButtonThemes {
     FIXED = 'fixed',
     STRETCHING = 'stretching'
+    // Костыль, так как на макете растягивающаяся
+    // кнопка только на одной странице в мобильной
+    // версии и больше нигде )))
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

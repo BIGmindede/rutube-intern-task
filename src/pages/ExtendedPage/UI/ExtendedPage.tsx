@@ -3,7 +3,6 @@ import { CaptionThemes } from "shared/UI/Caption/Caption"
 import Form from "widgets/Form/Form"
 import React from "react"
 import { AppRoutes } from "app/providers/router/config/routerConfig"
-import { ButtonThemes } from "shared/UI/Button/Button"
 
 const ExtendedPage: React.FC = () => {
     const questions = [
@@ -54,7 +53,7 @@ const ExtendedPage: React.FC = () => {
                     caption={{text: formCaptionText, theme: CaptionThemes.PALE}} 
                     questions={questions}
                     redirectOnComplete={AppRoutes.THANKS}
-                    completionButton={{label: "Отправить ответы", theme: ButtonThemes.FIXED}}
+                    completionButton="Отправить ответы"
                     formKey="Дополнительные вопросы"
                 />
             </section>
