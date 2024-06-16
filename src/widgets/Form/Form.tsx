@@ -17,7 +17,7 @@ interface FormProps {
         text: string,
         theme: CaptionThemes
     }
-    questions: Array<{
+    questions?: Array<{
         label?: string,
         required?: boolean,
         theme: RatingThemes,
@@ -36,7 +36,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({
-    heading, caption, questions, redirectOnComplete, completionButton, formKey
+    heading, caption, questions = [], redirectOnComplete, completionButton, formKey
 }) => {
     const navigate = useNavigate()
     
