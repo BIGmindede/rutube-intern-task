@@ -77,11 +77,16 @@ const Form: React.FC<FormProps> = ({
         )}
         {completionButton && 
             <Button
-                onClick={() => {
+                onClick={(e) => {
+                    e.preventDefault()
                     if (questions.length > 0) {
                         retrieveAnswers()
                     }
-                    navigate(redirectOnComplete)
+                    if (redirectOnComplete === AppRoutes.RUTUBE) {
+                        window.location.href = redirectOnComplete
+                    } else {
+                        navigate(redirectOnComplete)
+                    }
                 }}
                 label={completionButton.label}
                 theme={completionButton.theme}

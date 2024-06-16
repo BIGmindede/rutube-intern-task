@@ -5,4 +5,5 @@ export const retrieveAnswers = () => {
     Object.keys(allAnswers).forEach(formKey => {
         console.log(formKey, allAnswers[formKey])
     })
+    localStorage.removeItem("answers")
 }
