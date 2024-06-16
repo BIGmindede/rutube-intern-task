@@ -10,6 +10,7 @@
         gap: 28px;
         padding: 10px;
         width: clamp(375px, 100%, 550px);
+        align-items: center;
 
         @include mobile {
             gap: 14px;
