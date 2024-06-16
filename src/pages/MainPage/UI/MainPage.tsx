@@ -1,11 +1,24 @@
 import { AppRoutes } from "app/providers/router/config/routerConfig"
 import { RatingThemes } from "features/Rating/Rating"
-import React from "react"
+import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { CaptionThemes } from "shared/UI/Caption/Caption"
 import Image from "shared/UI/Image/Image"
 import Form from "widgets/Form/Form"
 
 const MainPage: React.FC = () => {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const stage = localStorage.getItem("stage")
+    
+        if (stage && stage === "completed") {
+            navigate(AppRoutes.ALREADY_PASSED)
+        }
+    }, [])
+
+
     const questions = [
         {
             buttons: [0,1,2,3,4,5,6,7,8,9],

@@ -1,10 +1,24 @@
 import { AppRoutes } from "app/providers/router/config/routerConfig"
-import React from "react"
+import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { CaptionThemes } from "shared/UI/Caption/Caption"
 import Image from "shared/UI/Image/Image"
 import Form from "widgets/Form/Form"
 
 const ThanksPage: React.FC = () => {
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const stage = localStorage.getItem("stage")
+    
+        if (!stage) {
+            navigate(AppRoutes.MAIN)
+        }
+        else if (stage === "extended") {
+            navigate(AppRoutes.EXTENDED)
+        }
+    }, [])
+    
   return (
     <main>
         <section>

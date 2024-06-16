@@ -57,6 +57,9 @@ const Rating: React.FC<RatingProps> = ({
         )
         dispatch(checkRequiredAnswers(formKey))
         if (redirectOnAnswer) {
+            if (localStorage.getItem("stage") !== "extended") {
+                localStorage.setItem("stage", "extended")
+            }
             navigate(redirectOnAnswer)
         }
     }

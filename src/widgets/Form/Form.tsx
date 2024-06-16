@@ -78,6 +78,7 @@ const Form: React.FC<FormProps> = ({
                     e.preventDefault()
                     if (questions.length > 0) {
                         retrieveAnswers()
+                        localStorage.setItem("stage", "completed")
                     }
                     if (redirectOnComplete === AppRoutes.RUTUBE) {
                         window.location.href = redirectOnComplete
