@@ -31,7 +31,8 @@ const MainPage: React.FC = () => {
                     theme: CaptionThemes.BASIC
                 }}
                 questions={questions} 
-                redirectOnComplete={AppRoutes.EXTENDED} 
+                redirectOnComplete={AppRoutes.EXTENDED}
+                formKey="Оценка обращения"
             />
         </section>
     </main>

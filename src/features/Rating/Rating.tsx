@@ -1,9 +1,13 @@
-import React, { MouseEvent, useState } from 'react'
+import React, { MouseEvent, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames'
 import cls from './Rating.module.scss'
 import RatingButton, { RatingButtonThemes } from 'shared/UI/RatingButton/RatingButton'
 import { useNavigate } from 'react-router-dom'
 import { AppRoutes } from 'app/providers/router/config/routerConfig'
+import { useAppDispatch } from 'shared/config/store/hooks'
+import { checkRequiredAnswers } from 'shared/config/store/actionCreators/answersActions'
+import { getAnswersByFormKey } from 'shared/lib/getAnswersByFormKey'
+import { getAllAnswers } from 'shared/lib/getAllAnswers'
 
 export enum RatingThemes {
     GRID = 'grid',
@@ -21,23 +25,50 @@ interface RatingProps {
         left: string,
         right: string
     },
-    redirectOnAnswer?: AppRoutes | false
+    redirectOnAnswer?: AppRoutes | false,
+    formKey: string
 }
 
 const Rating: React.FC<RatingProps> = ({
-    label, required, theme, buttons, questionID, boundsCaption, redirectOnAnswer
+    label, required, theme, buttons, questionID, boundsCaption, redirectOnAnswer, formKey
 }) => {
-    const [answer, setAnswer] = useState<number | null>(null)
+    const [answer, setAnswer] = useState<number>(0)
 
     const navigate = useNavigate()
 
+    const dispatch = useAppDispatch()
+
     const handleAnswer = (e: MouseEvent, buttonIndex: number) => {
         e.preventDefault()
+        
         setAnswer(buttonIndex + 1)
+
+        const allAnswers = getAllAnswers()
+        let answers = getAnswersByFormKey(formKey)
+        answers = answers.filter(answer => answer.questionID !== questionID)
+        answers.push({
+            questionID,
+            responseID: buttonIndex + 1
+        })
+        allAnswers[formKey] = answers
+        localStorage.setItem(
+            "answers",
+            JSON.stringify(allAnswers)
+        )
+        dispatch(checkRequiredAnswers(formKey))
         if (redirectOnAnswer) {
             navigate(redirectOnAnswer)
         }
     }
+
+    useEffect(() => {
+        const answers = getAnswersByFormKey(formKey)
+        const questionIndex = answers.findIndex(answer => answer?.questionID === questionID)
+        if (questionIndex !== -1) {
+            answers[questionIndex]?.responseID
+            setAnswer(answers[questionIndex]?.responseID ?? 0)
+        }
+    }, [])
 
     return (
         <div className={classNames(cls.rating, {}, [cls[theme]])}>
@@ -53,7 +84,7 @@ const Rating: React.FC<RatingProps> = ({
                             ? RatingButtonThemes.TEXT
                             : RatingButtonThemes.NUMBER
                         }
-                        active={index + 1 === answer}
+                        active={answer === index + 1}
                         onClick={(e) => handleAnswer(e, index)}
                     />
                 )}

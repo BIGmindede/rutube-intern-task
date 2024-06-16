@@ -16,7 +16,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const RatingButton: React.FC<ButtonProps> = ({ label, theme, active, onClick }) => {
   return (
     <button 
-        onClick={onClick} 
+        onClick={onClick}
         className={classNames(cls.button, {[cls.active]: active}, [cls[theme]])}
     >
         {label}

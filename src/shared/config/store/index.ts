@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit"
-
+import formButtonStateReducer from './slices/formButtonSlice'
 
 export const store = configureStore({
     reducer: {
-
+        formButtonState: formButtonStateReducer
     }
 })
 

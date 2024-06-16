@@ -1,12 +1,15 @@
 import { AppRoutes } from 'app/providers/router/config/routerConfig'
 import Rating, { RatingThemes } from 'features/Rating/Rating'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Caption, { CaptionThemes } from 'shared/UI/Caption/Caption'
 import cls from './Form.module.scss'
 import Heading from 'shared/UI/Heading/Heading'
 import Button, { ButtonThemes } from 'shared/UI/Button/Button'
 import { classNames } from 'shared/lib/classNames'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from 'shared/config/store/hooks'
+import { checkRequiredAnswers } from 'shared/config/store/actionCreators/answersActions'
+import { retrieveAnswers } from 'shared/lib/retrieveAnswers'
 
 interface FormProps {
     heading?: string,
@@ -28,13 +31,24 @@ interface FormProps {
     completionButton?: {
         label: string,
         theme: ButtonThemes
-    }
+    },
+    formKey?: string
 }
 
 const Form: React.FC<FormProps> = ({
-    heading, caption, questions, redirectOnComplete, completionButton
+    heading, caption, questions, redirectOnComplete, completionButton, formKey
 }) => {
     const navigate = useNavigate()
+    
+    const dispatch = useAppDispatch()
+
+    const requiredQuestions: Array<number> = questions
+        .filter(q => q.required).map((q, i) => i + 1)
+    localStorage.setItem("requiredQuestions", JSON.stringify(requiredQuestions))
+
+    useEffect(() => {
+        dispatch(checkRequiredAnswers(formKey))
+    }, [])
 
   return (
     <form 
@@ -57,14 +71,15 @@ const Form: React.FC<FormProps> = ({
                 buttons={question.buttons}
                 questionID={index + 1} 
                 boundsCaption={question.boundsCaption}
+                formKey={formKey ?? ""}
                 redirectOnAnswer={completionButton ? false : redirectOnComplete}
             />
         )}
         {completionButton && 
-            <Button 
+            <Button
                 onClick={() => {
                     if (questions.length > 0) {
-                        // Выводим в консоль
+                        retrieveAnswers()
                     }
                     navigate(redirectOnComplete)
                 }}

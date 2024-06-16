@@ -55,6 +55,7 @@ const ExtendedPage: React.FC = () => {
                     questions={questions}
                     redirectOnComplete={AppRoutes.THANKS}
                     completionButton={{label: "Отправить ответы", theme: ButtonThemes.FIXED}}
+                    formKey="Дополнительные вопросы"
                 />
             </section>
         </main>
