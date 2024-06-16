@@ -5,6 +5,18 @@
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
+    background-image: url(extended.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 581px 540px;
+
+    @include tablet {
+        background-size: 548px 509px;
+    }
+
+    @include mobile {
+        background: none;
+    }
 }
 
 .simple {
